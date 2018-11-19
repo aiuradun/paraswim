@@ -1,7 +1,7 @@
 .grid-container {
   margin: 0 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-row-gap: 1rem;
   grid-column-gap: 0.5rem;
   
@@ -9,7 +9,7 @@
 
 
 .example-card {
-  max-width: 300px;
+  max-width: 400px;
 /*  min-height: 300px;*/
 }
 /*

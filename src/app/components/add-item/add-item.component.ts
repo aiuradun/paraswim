@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from './../../services/item.service';
 import { Item } from './../../models/item';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-add-item',
@@ -8,6 +9,7 @@ import { Item } from './../../models/item';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
+  //@import() item : Item;
   item:Item = {
     title: '',
     description: ''
@@ -15,9 +17,24 @@ export class AddItemComponent implements OnInit {
   }
 
 
-  constructor(private itemService : ItemService) { }
+  constructor(private itemService : ItemService,
+              private route: ActivatedRoute) {
+    this.route.params.subscribe(params => console.log(params));
+    //this.route.params.subscribe(params => this.itemService.getItem(params['id']));
+    //this.route.params.subscribe(params => this.itemService.getItem(params['id']));
+    this.route.params.subscribe(params => console.log(params['id']);
+    let a:any
+    this.route.params.subscribe(params => a = params['id'];
+    console.log(a);
+    this.route.params.subscribe(params => this.itemService.getItem(params['id']).subscribe(item => {
+      this.item = item;
+    }));
+    //    this.route.params.subscribe(params => this.itemService.getItem(params['id']));
+    //this item = this.itemService.getItem(this.route.params.pipe)
+   }
 
   ngOnInit() {
+
   }
 
   onSubmit(){

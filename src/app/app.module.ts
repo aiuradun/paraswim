@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatInputModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatInputModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { NavComponent } from './components/nav/nav.component';
 import { DragComponent } from './components/drag/drag.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -39,7 +39,8 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     MatListModule,
     DragDropModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]

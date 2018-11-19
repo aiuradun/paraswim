@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'items', component: ItemsComponent},
   { path: 'drag', component: DragComponent},
   { path: 'add-item', component: AddItemComponent},
+  { path: 'add-item/:id', component: AddItemComponent},
   { path: '',
     redirectTo: '/items',
     pathMatch: 'full'
