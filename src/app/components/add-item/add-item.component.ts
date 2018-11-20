@@ -12,34 +12,38 @@ export class AddItemComponent implements OnInit {
   item:Item = {
     title: '',
     description: ''
-
   }
+  testid;
 
 
   constructor(private itemService : ItemService,
               private route: ActivatedRoute) {
+
+
+
     // this.route.params.subscribe(params => console.log(params));
-
-
     // this.route.params.subscribe(params => a = params['id']);
- 
-    
     //    this.route.params.subscribe(params => this.itemService.getItem(params['id']));
     //this item = this.itemService.getItem(this.route.params.pipe)
    }
 
   ngOnInit() {
-/*    let id : string
-    this.route.params.subscribe(params => id = params['id']);
-    this.itemService.getItem(id).subscribe(item => {
+    let id : string
+    //this.route.params.subscribe(params => id = params['id']);
+    id = this.route.snapshot.paramMap.get('id');
+    console.log(id)
+    this.testid = id
+/*    this.itemService.getItem(id).subscribe(item => {
       this.item = item;
       */
-    this.route.params.subscribe(params =>
+    /* 
+      this.route.params.subscribe(params =>
       this.itemService.getItem(params['id']).subscribe(item => {
         this.item = item;
         console.log(this.item.title)
       })
     );
+    */
 //      console.log(this.item.title, this.item.description)
     
 
