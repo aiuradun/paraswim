@@ -1,5 +1,5 @@
   <div class="container">
-    <h5>Jeg har funder: {{testid}}</h5>
+    <h5 *ngIf="edit">Jeg har fundet: {{item.title}}</h5>
     <h3>Add an item</h3>
     <form (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline">
@@ -11,9 +11,10 @@
         <textarea [(ngModel)]="item.description" name="description" matInput placeholder="Description"></textarea>
       </mat-form-field>
 
-      <button type="submit" mat-raised-button>Tilføj</button>
-      <br/>
-      <a [routerLink]="['/items']">Link</a>
+      <button *ngIf="edit" type="submit" mat-raised-button>Rediger</button><button *ngIf="!edit" type="submit" mat-raised-button>Tilføj</button>
+
+      <br/><br/>
+      <a [routerLink]="['/items']">Back</a>
     </form>
     <h6>{{item.title}}</h6>
     <h6>{{item.description}}</h6>

@@ -9,16 +9,14 @@ import { Item } from '../models/item';
 })
 export class ItemService {
   itemsCollection: AngularFirestoreCollection<Item>;
+  itemDocument: AngularFirestoreDocument<Item>
   items: Observable<Item[]>;
-  item: Item;
+  item: Observable<Item>;
 
-  constructor(public afs: AngularFirestore) { 
-    this.itemsCollection = this.afs.collection('items', ref => ref.limit(20));
-    
-  }
+  constructor(private afs: AngularFirestore) { }
 
   getItems() {
-//this.afs.collection('items', ref => ref.limit(4))
+    this.itemsCollection = this.afs.collection('items', ref => ref.limit(20));
     this.items = this.itemsCollection.snapshotChanges()
     .pipe(
       map(changes => {
@@ -34,7 +32,7 @@ export class ItemService {
   }
 
   getItem(id) {
-    return this.itemsCollection.doc(id).get()
+    this.itemsCollection.doc(id) as Item    
   }
 
   addItem(item: Item) {
@@ -45,8 +43,8 @@ export class ItemService {
     this.itemsCollection.doc(item.id).delete();
   }
 
-  editItem(item: Item) {
-    this.itemsCollection.doc(item.id).set(item)
+  updateItem(item: Item) {
+    this.itemsCollection.doc(item.id).update(item);
   }
 
 }

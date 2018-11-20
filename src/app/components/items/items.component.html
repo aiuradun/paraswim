@@ -21,7 +21,7 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #editMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/add-item', item.id]">Edit: ✏️</button>
+            <button mat-menu-item [routerLink]="['/add-item', item]">Edit: ✏️</button>
             <button mat-menu-item (click)="deleteItem($event, item)">Delete: ❌️</button>
         </mat-menu>
       </mat-card-actions>
