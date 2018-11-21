@@ -15,8 +15,11 @@ export class ItemService {
 
   constructor(private afs: AngularFirestore) { }
 
-  getItems() {
-    this.itemsCollection = this.afs.collection('items', ref => ref.limit(20));
+  getItems(sortOrder?: string) {
+    if (sortOrder === undefined) {
+      sortOrder = "title";
+    }
+    this.itemsCollection = this.afs.collection('items', ref => ref.limit(20).orderBy(sortOrder));
     this.items = this.itemsCollection.snapshotChanges()
     .pipe(
       map(changes => {

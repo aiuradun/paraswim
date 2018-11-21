@@ -3,7 +3,6 @@ import { ItemService } from './../../services/item.service';
 import { Item } from './../../models/item';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-add-item',
