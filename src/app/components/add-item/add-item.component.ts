@@ -3,6 +3,7 @@ import { ItemService } from './../../services/item.service';
 import { Item } from './../../models/item';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-add-item',
@@ -11,12 +12,12 @@ import { Router } from "@angular/router";
 })
 export class AddItemComponent implements OnInit {
   item:Item = {
+    id: '',
     title: '',
     description: ''
   }
   edit;
-
-
+ 
   constructor(private itemService : ItemService,
               private route: ActivatedRoute,
               private router: Router) {
@@ -25,18 +26,8 @@ export class AddItemComponent implements OnInit {
 
   ngOnInit() {
 
-    this.edit = false;
-    //this.route.params.subscribe(params => id = params['id']);
-    this.item.id = this.route.snapshot.paramMap.get('id');
-    if (this.item.id != null) {
-      this.edit = true
-      this.itemService.getItem(this.item.id).subscribe(item => {
-        //console.log(items);
-          this.item = item;
-        });
-      //this.item = this.itemService.getItem(this.item.id);
-    }
   }
+    
 
   onSubmit(){
     if(this.item.title != '' && this.item.description != '') {

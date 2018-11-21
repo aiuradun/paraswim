@@ -7,21 +7,35 @@
         <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
       </mat-card-header>
       <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
-      <mat-card-content>
-        <p>
-          the id is: {{item.id}}
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          🏆
-        </p>
+      <mat-card-content *ngIf="edit && itemToEdit.id == item.id; else elseTemplate">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input [(ngModel)]="item.title" name="title" matInput placeholder="Title">
+          </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea [(ngModel)]="item.description" name="description" matInput placeholder="Description"></textarea>
+        </mat-form-field>
       </mat-card-content>
+      <ng-template #elseTemplate>
+        <mat-card-content>
+          <p>
+            the id is: {{item.id}}
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            🏆
+          </p>
+        </mat-card-content>
+      </ng-template>
       <mat-card-actions>
+        <button *ngIf="edit && itemToEdit.id == item.id" mat-raised-button (click)="updateItem($event, item)">Save 💾</button>
         <button mat-button>LIKE</button>
         <button mat-button>SHARE</button>
         <button mat-icon-button [matMenuTriggerFor]="editMenu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #editMenu="matMenu">
-            <button mat-menu-item [routerLink]="['/add-item', item]">Edit: ✏️</button>
+            <!--<button mat-menu-item [routerLink]="['/add-item', item]">Edit: ✏️</button>-->
+            <button mat-menu-item (click)="editItem($event, item)">Edit: ✏️</button>
             <button mat-menu-item (click)="deleteItem($event, item)">Delete: ❌️</button>
         </mat-menu>
       </mat-card-actions>

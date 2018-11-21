@@ -31,8 +31,8 @@ export class ItemService {
     return this.items;
   }
 
-  getItem(id) {
-    this.itemsCollection.doc(id) as Item    
+  getItem(item: Item) {
+
   }
 
   addItem(item: Item) {
