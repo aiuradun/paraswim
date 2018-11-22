@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from './../../services/item.service';
 import { Item } from './../../models/item';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -10,14 +10,14 @@ import { Router } from "@angular/router";
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
-  item:Item = {
+  item: Item = {
     id: '',
     title: '',
     description: ''
-  }
+  };
   edit;
- 
-  constructor(private itemService : ItemService,
+
+  constructor(private itemService: ItemService,
               private route: ActivatedRoute,
               private router: Router) {
 
@@ -26,10 +26,10 @@ export class AddItemComponent implements OnInit {
   ngOnInit() {
 
   }
-    
 
-  onSubmit(){
-    if(this.item.title != '' && this.item.description != '') {
+
+  onSubmit() {
+    if (this.item.title !== '' && this.item.description !== '') {
       if (this.edit) {
         this.itemService.updateItem(this.item);
       } else {
@@ -40,7 +40,6 @@ export class AddItemComponent implements OnInit {
       this.router.navigate(['items']);
 
     }
-   
 
   }
 

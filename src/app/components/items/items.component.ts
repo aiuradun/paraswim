@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item.service';
-import { Item } from '../../models/item'
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-items',
@@ -10,32 +10,32 @@ import { Item } from '../../models/item'
 export class ItemsComponent implements OnInit {
   items: Item[];
   edit: boolean;
-  itemToEdit : Item;
+  itemToEdit: Item;
 
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    //console.log('ngOnInit Ran');
+    // console.log('ngOnInit Ran');
     this.itemService.getItems().subscribe(items => {
-    //console.log(items);
+    // console.log(items);
       this.items = items;
       this.edit = false;
     });
   }
 
-  deleteItem(event, item){
+  deleteItem (event, item) {
       this.itemService.deleteItem(item);
     }
-  
-  editItem(event, item){
-    this.edit = true
-    this.itemToEdit = item
+
+  editItem(event, item) {
+    this.edit = true;
+    this.itemToEdit = item;
   }
 
-  updateItem(event, item){
+  updateItem(event, item) {
     this.itemService.updateItem(item);
-    this.edit = false
+    this.edit = false;
 
   }
-    
+
 }
